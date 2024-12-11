@@ -1,7 +1,7 @@
 import { questions } from "@/lib/question";
 import { NextRequest } from "next/server";
 
-export const revalidate = 10;
+export const revalidate = 0;
 
 export async function GET(
   _req: NextRequest,
