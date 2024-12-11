@@ -1,6 +1,17 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import {
+  Github,
+  Globe,
+  Home,
+  Mail,
+  Phone,
+  Server,
+  TestTubeDiagonal,
+  User,
+} from "lucide-react";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +38,82 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <main className="relative flex flex-col items-center justify-center gap-4">
+          {children}
+          <nav className="sticky bottom-4 flex items-center justify-evenly border w-full max-w-md p-2 rounded">
+            <Link prefetch={true} className="group relative" href={"/"}>
+              <Home />
+              <p className="group-hover:block group-hover:opacity-100 absolute -translate-x-1/2 left-1/2 -translate-y-full -top-1 bg-background border px-1 text-nowrap rounded transition-all duration-300 hidden opacity-0">
+                Home
+              </p>
+            </Link>
+            <Link prefetch={true} className="group relative" href={"/client"}>
+              <User />
+              <p className="group-hover:block group-hover:opacity-100 absolute -translate-x-1/2 left-1/2 -translate-y-full -top-1 bg-background border px-1 text-nowrap rounded transition-all duration-300 hidden opacity-0">
+                CSR
+              </p>
+            </Link>
+            <Link prefetch={true} className="group relative" href={"/server"}>
+              <Server />
+              <p className="group-hover:block group-hover:opacity-100 absolute -translate-x-1/2 left-1/2 -translate-y-full -top-1 bg-background border px-1 text-nowrap rounded transition-all duration-300 hidden opacity-0">
+                SSR
+              </p>
+            </Link>
+            <a
+              className="group relative"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={
+                "https://github.com/dataleonlabs/hiring-candidate/blob/master/FRONTEND.md"
+              }
+            >
+              <TestTubeDiagonal />
+              <p className="group-hover:block group-hover:opacity-100 absolute -translate-x-1/2 left-1/2 -translate-y-full -top-1 bg-background border px-1 text-nowrap rounded transition-all duration-300 hidden opacity-0">
+                Test
+              </p>
+            </a>
+          </nav>
+          <footer className="sticky top-0 size-full h-64 p-2 rounded-t-[60%_15%] shadow-2xl shadow-foreground flex items-center justify-center">
+            <ul className="max-w-md flex flex-wrap items-center justify-center gap-4">
+              <li>
+                <a
+                  className="underline flex items-center justify-center gap-1"
+                  href="https://lorisalexandre.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Globe /> My personal website
+                </a>
+              </li>
+              <li>
+                <a
+                  className="underline flex items-center justify-center gap-1"
+                  href="https://github.com/LorisAlexandre/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github /> My github
+                </a>
+              </li>
+              <li>
+                <a
+                  className="underline flex items-center justify-center gap-1"
+                  href="mailto:loris.alexandre66@gmail.com"
+                >
+                  <Mail /> My email
+                </a>
+              </li>
+              <li>
+                <a
+                  className="underline flex items-center justify-center gap-1"
+                  href="tel:+33769395249"
+                >
+                  <Phone /> My phone
+                </a>
+              </li>
+            </ul>
+          </footer>
+        </main>
       </body>
     </html>
   );
